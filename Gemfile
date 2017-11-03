@@ -33,6 +33,15 @@ group :development do
   gem "puppet-module-win-default-r#{minor_version}",   require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "puppet-module-win-dev-r#{minor_version}",       require: false, platforms: [:mswin, :mingw, :x64_mingw]
 end
+group :system_tests do
+  gem "puppet-module-posix-system-r#{minor_version}",  require: false, platforms: [:ruby]
+  gem "beaker", '~> 3.13',                             require: false
+  gem "beaker-abs", '~> 0.1',                          require: false
+  gem "beaker-pe",                                     require: false
+  gem "beaker-hostgenerator",                          require: false
+  gem "beaker-rspec",                                  require: false
+  gem "rspec-retry",                                   require: false
+end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
 puppet_type = gem_type(puppet_version)
