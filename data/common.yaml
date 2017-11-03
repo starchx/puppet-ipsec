@@ -1,0 +1,7 @@
+---
+ipsec::ensure: present
+ipsec::packages:
+  - strongswan
+ipsec::secrets: []
+ipsec::secret_includes: []
+ipsec::secrets_file: '/etc/ipsec.secrets'

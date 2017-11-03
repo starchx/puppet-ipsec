@@ -1,0 +1,30 @@
+---
+ipsec::secrets: 
+  - selector: '@example.org'
+    secret:
+      type: PSK
+      passphrase: 'asdf1234'
+  - selector: 'rsa-a.example.org'
+    secret:
+      type: RSA
+      private_key_file: '/etc/ipsec.d/private/host-a.key'
+      prompt: true
+  - selector: 'rsa-b.example.org'
+    secret:
+      type: RSA
+      private_key_file: '/etc/ipsec.d/private/host-b.key'
+      passphrase: 'asdf1234'
+  - secret:
+      type: RSA
+      private_key_file: '/etc/ipsec.d/private/host-def.key'
+  - secret:
+      type: PIN
+      slotnr: 1
+      keyid: 50
+      pin: 1234
+  - secret:
+      type: PIN
+      slotnr: 1
+      module: opensc
+      keyid: 45
+      prompt: true

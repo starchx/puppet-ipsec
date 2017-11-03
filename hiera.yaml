@@ -1,0 +1,25 @@
+---
+version: 4
+datadir: 'data'
+
+hierarchy:
+  - name: 'Full Version'
+    paths:
+      - '%{facts.os.name}-%{facts.os.release.full}'
+    backend: yaml
+  - name: 'Major Version'
+    paths:
+      - '%{facts.os.name}-%{facts.os.release.major}'
+    backend: yaml
+  - name: 'Distribution Name'
+    paths:
+      - '%{facts.os.name}'
+    backend: yaml
+  - name: 'Operating System Family'
+    paths:
+      - '%{facts.os.family}'
+    backend: yaml
+  - name: 'common'
+    paths:
+      - 'common'
+    backend: yaml
