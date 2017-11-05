@@ -9,9 +9,9 @@
 class ipsec (
   Enum['present', 'absent']   $ensure,
   Array[String]               $packages,
+  Stdlib::Absolutepath        $secrets_file,
   Array[Ipsec::Secret]        $secrets,
   Array[Stdlib::Absolutepath] $secret_includes,
-  Stdlib::Absolutepath        $secrets_file,
 ) {
   contain ipsec::install
   contain ipsec::config

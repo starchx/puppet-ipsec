@@ -9,11 +9,14 @@ describe 'ipsec' do
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_class('ipsec') }
         it { is_expected.to contain_class('ipsec::install').that_comes_before('Class[ipsec::config]') }
-        it { is_expected.to contain_class('ipsec::config') }
-        it { is_expected.to contain_class('ipsec::service').that_subscribes_to('Class[ipsec::config]') }
+        it { is_expected.to contain_class('ipsec::config').that_notifies('Class[ipsec::service]') }
+        it { is_expected.to contain_class('ipsec::service') }
       end
       describe 'install' do
-        it { is_expected.to contain_package('strongswan') }
+        it do
+          is_expected.to contain_package('strongswan')
+            .with_ensure('present')
+        end
       end
       describe 'config' do
         it do
@@ -46,6 +49,14 @@ describe 'ipsec' do
         it do
           is_expected.to contain_file('/etc/ipsec.secrets')
             .with_content(%r{^ : PIN %smartcard1@opensc:45 %prompt$})
+        end
+        it do
+          is_expected.to contain_file('/etc/ipsec.secrets')
+            .with_content(%r{^include /var/lib/strongswan/ipsec.secrets.inc$})
+        end
+        it do
+          is_expected.to contain_file('/etc/ipsec.secrets')
+            .with_content(%r{^include /etc/ipsec.d/very.secret$})
         end
       end
     end

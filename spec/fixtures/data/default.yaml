@@ -28,3 +28,6 @@ ipsec::secrets:
       module: opensc
       keyid: 45
       prompt: true
+ipsec::secret_includes:
+  - '/var/lib/strongswan/ipsec.secrets.inc'
+  - '/etc/ipsec.d/very.secret'
