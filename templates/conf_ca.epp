@@ -1,0 +1,14 @@
+# ca definition for <%= $name %>
+
+ca <%= $name %>
+<%
+if $also         { %>  also = <%= $also %><% }
+if $auto         { %>  auto = <%= $auto %><% }
+if $cacert       { %>  cacert = <%= $cacert %><% }
+if $crluri       { %>  crluri = <%= $crluri %><% }
+if $crluri2      { %>  crluri2 = <%= $crluri2 %><% }
+if $ocspuri      { %>  ocspuri = <%= $ocspuri %><% }
+if $ocspuri2     { %>  ocspuri2 = <%= $ocspuri2 %><% }
+if $certunribase { %>  certuribase = <%= $certunribase %><% }
+if $ldaphost     { %>  ldaphost = <%= $ldaphost %><% }
+%>

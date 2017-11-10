@@ -5,3 +5,5 @@ ipsec::packages:
 ipsec::secrets: []
 ipsec::secret_includes: []
 ipsec::secrets_file: '/etc/ipsec.secrets'
+ipsec::conf_file: '/etc/ipsec.conf'
+ipsec::conf: {}

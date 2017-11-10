@@ -1,0 +1,8 @@
+# ipsec.conf - strongSwan IPsec configuration file
+
+# basic configuration
+
+config setup
+<% $ipsec::conf['setup'].each |String $k, Data $v| { %>
+  <%= $k %> = <%= $v %>
+<%}%>
