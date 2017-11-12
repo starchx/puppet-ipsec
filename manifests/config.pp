@@ -36,20 +36,24 @@ class ipsec::config {
   }
   # create singleton setup section
   concat::fragment{ 'setup':
-    target => $ipsec::conf_file,
-    order  => 1,
+    target  => $ipsec::conf_file,
+    order   => 1,
     content => epp('ipsec/conf_setup.epp'),
   }
   # factory for ca sections
-  $ipsec::conf['authorities'].each |String $name, Hash $params| {
-    ipsec::conf::ca{ $name:
-      * => $params
+  if $ipsec::conf['authorities'] =~ Hash {
+    $ipsec::conf['authorities'].each |String $name, Hash $params| {
+      ipsec::conf::ca{ $name:
+        * => $params
+      }
     }
   }
   # factory for conn sections
-  $ipsec::conf['connections'].each |String $name, Hash $params| {
-    ipsec::conf::conn{ $name:
-      * => $params
+  if $ipsec::conf['connections'] =~ Hash {
+    $ipsec::conf['connections'].each |String $name, Hash $params| {
+      ipsec::conf::conn{ $name:
+        * => $params
+      }
     }
   }
 }

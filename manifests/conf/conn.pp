@@ -54,7 +54,7 @@ define ipsec::conf::conn(
   ]]                         $fragmentation = undef,
   Optional[String]           $ike = undef,
   Optional[
-    Pattern[/^[0-9]{6}$]
+    Pattern[/^[0-9]{6}$/]
   ]                          $ikedscp = undef,
   Optional[Ipset::Time]      $ikelifetime = undef,
   Optional[Enum['yes','no']] $installpolicy = undef,
@@ -150,8 +150,8 @@ define ipsec::conf::conn(
   Optional[String]           $me_peerid = undef,
 ) {
   concat::fragment{ "ca ${name}":
-    target => $ipsec::conf_file,
-    order  => 2,
+    target  => $ipsec::conf_file,
+    order   => 3,
     content => epp('ipsec/conf_ca.epp'),
   }
 }

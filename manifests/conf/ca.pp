@@ -18,8 +18,8 @@ define ipsec::conf::ca(
   Optional[String]               $ldaphost = undef,
 ) {
   concat::fragment{ "ca ${name}":
-    target => $ipsec::conf_file,
-    order  => 2,
+    target  => $ipsec::conf_file,
+    order   => 2,
     content => epp('ipsec/conf_ca.epp'),
   }
 }
