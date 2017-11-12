@@ -6,7 +6,14 @@
 #
 # @example
 #   include ipsec::config
-class ipsec::config {
+#
+# @param secrets_file path to ipsec.secrets file
+# @param conf_file path to ipsec.conf file
+#
+class ipsec::config (
+  Stdlib::Absolutepath $secrets_file,
+  Stdlib::Absolutepath $conf_file,
+) {
   $file_ensure = $ipsec::ensure ? {
     'present' => 'file',
     default   => $ipsec::ensure,
@@ -14,7 +21,7 @@ class ipsec::config {
   ##
   ## build the secrets file
   ##
-  file { $ipsec::secrets_file:
+  file { $secrets_file:
     ensure    => $file_ensure,
     content   => epp('ipsec/secrets.epp'),
     group     => '0',
@@ -25,7 +32,7 @@ class ipsec::config {
   ##
   ## build the ipsec.conf file
   ##
-  concat { $ipsec::conf_file:
+  concat { $conf_file:
     ensure         => $ipsec::ensure,
     group          => '0',
     mode           => '0644',
@@ -36,7 +43,7 @@ class ipsec::config {
   }
   # create singleton setup section
   concat::fragment{ 'setup':
-    target  => $ipsec::conf_file,
+    target  => $conf_file,
     order   => 1,
     content => epp('ipsec/conf_setup.epp'),
   }

@@ -40,9 +40,9 @@ define ipsec::conf::conn(
     'hold',
     'restart'
   ]]                         $dpdaction = undef,
-  Optional[Ipset::Time]      $dpddelay = undef,
-  Optional[Ipset::Time]      $dpdtimeout = undef,
-  Optional[Ipset::Time]      $inactivity = undef,
+  Optional[Ipsec::Time]      $dpddelay = undef,
+  Optional[Ipsec::Time]      $dpdtimeout = undef,
+  Optional[Ipsec::Time]      $inactivity = undef,
   Optional[String]           $eap_identity = undef,
   Optional[String]           $esp = undef,
   Optional[Enum['yes','no']] $forceencaps = undef,
@@ -56,7 +56,7 @@ define ipsec::conf::conn(
   Optional[
     Pattern[/^[0-9]{6}$/]
   ]                          $ikedscp = undef,
-  Optional[Ipset::Time]      $ikelifetime = undef,
+  Optional[Ipsec::Time]      $ikelifetime = undef,
   Optional[Enum['yes','no']] $installpolicy = undef,
   Optional[Enum[
     'ike',
@@ -66,10 +66,10 @@ define ipsec::conf::conn(
   Optional[String]           $keyingtries = undef,
   Optional[Integer]          $lifebytes = undef,
   Optional[Integer]          $lifepackets = undef,
-  Optional[Ipset::Time]      $lifetime = undef,
+  Optional[Ipsec::Time]      $lifetime = undef,
   Optional[Integer]          $marginbytes = undef,
   Optional[Integer]          $marginpackets = undef,
-  Optional[Ipset::Time]      $margintime = undef,
+  Optional[Ipsec::Time]      $margintime = undef,
   Optional[String]           $mark = undef,
   Optional[String]           $mark_in = undef,
   Optional[String]           $mark_out = undef,
@@ -150,7 +150,7 @@ define ipsec::conf::conn(
   Optional[String]           $me_peerid = undef,
 ) {
   concat::fragment{ "ca ${name}":
-    target  => $ipsec::conf_file,
+    target  => lookup('ipsec::config::conf_file'),
     order   => 3,
     content => epp('ipsec/conf_ca.epp'),
   }

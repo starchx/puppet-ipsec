@@ -1,9 +1,10 @@
 ---
 ipsec::ensure: present
-ipsec::packages:
-  - strongswan
 ipsec::secrets: []
 ipsec::secret_includes: []
-ipsec::secrets_file: '/etc/ipsec.secrets'
-ipsec::conf_file: '/etc/ipsec.conf'
 ipsec::conf: {}
+
+ipsec::install::packages:
+  - strongswan
+ipsec::config::secrets_file: '/etc/ipsec.secrets'
+ipsec::config::conf_file: '/etc/ipsec.conf'

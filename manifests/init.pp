@@ -8,20 +8,14 @@
 #   include ipsec
 #
 # @param ensure ensure meta-parameter to add or remove config done by this module
-# @param packages array of packages to be installed
-# @param secrets_file path to ipsec.secrets file
 # @param secrets array of secrets to be added to ipsec.secrets
 # @param secret_includes array of paths to files to be included to ipsec.secrets
-# @param conf_file path to ipsec.conf file
 # @param conf Hash of ipsec.conf entries; for details see [https://wiki.strongswan.org/projects/strongswan/wiki/IpsecConf]
 #
 class ipsec (
   Enum['present', 'absent']   $ensure,
-  Array[String]               $packages,
-  Stdlib::Absolutepath        $secrets_file,
   Array[Ipsec::Secret]        $secrets,
   Array[Stdlib::Absolutepath] $secret_includes,
-  Stdlib::Absolutepath        $conf_file,
   Struct[{
     setup       => Optional[Hash[String,Hash]],
     authorities => Optional[Hash[String,Hash]],
