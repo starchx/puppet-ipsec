@@ -1,0 +1,5 @@
+---
+ipsec::install::packages:
+  - strongswan
+ipsec::config::secrets_file: '/etc/ipsec.secrets'
+ipsec::config::conf_file: '/etc/ipsec.conf'
