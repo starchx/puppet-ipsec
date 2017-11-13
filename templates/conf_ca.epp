@@ -2,13 +2,13 @@
 
 ca <%= $name %>
 <%
-if $also         { %>  also = <%= $also %><% }
-if $auto         { %>  auto = <%= $auto %><% }
-if $cacert       { %>  cacert = <%= $cacert %><% }
-if $crluri       { %>  crluri = <%= $crluri %><% }
-if $crluri2      { %>  crluri2 = <%= $crluri2 %><% }
-if $ocspuri      { %>  ocspuri = <%= $ocspuri %><% }
-if $ocspuri2     { %>  ocspuri2 = <%= $ocspuri2 %><% }
-if $certunribase { %>  certuribase = <%= $certunribase %><% }
-if $ldaphost     { %>  ldaphost = <%= $ldaphost %><% }
+if $also { %>  also = <%= "${also}\n" %><% }
+if $auto { %>  auto = <%= "${auto}\n" %><% }
+if $cacert { %>  cacert = <%= "${cacert}\n" %><% }
+if $crluri { %>  crluri = <%= "${crluri}\n" %><% }
+if $crluri2 { %>  crluri2 = <%= "${crluri2}\n" %><% }
+if $ocspuri { %>  ocspuri = <%= "${ocspuri}\n" %><% }
+if $ocspuri2 { %>  ocspuri2 = <%= "${ocspuri2}\n" %><% }
+if $certuribase { %>  certuribase = <%= "${certuribase}\n" %><% }
+if $ldaphost { %>  ldaphost = <%= "${ldaphost}\n" %><% }
 %>
