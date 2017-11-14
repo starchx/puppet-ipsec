@@ -3,3 +3,5 @@ ipsec::install::packages:
   - strongswan
 ipsec::config::secrets_file: '/etc/ipsec.secrets'
 ipsec::config::conf_file: '/etc/ipsec.conf'
+ipsec::service::service_name: strongswan
+ipsec::service::service_restart: '/usr/sbin/ipsec reload'

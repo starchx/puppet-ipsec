@@ -1,10 +1,16 @@
 # ipsec::service
 #
-# A description of what this class does
+# Manage the service needed for ipsec operations. Do not include this class on its own.
 #
-# @summary A short summary of the purpose of this class
+# @summary Service management class for IPSec
 #
-# @example
-#   include ipsec::service
-class ipsec::service {
+class ipsec::service (
+  String $service_name,
+  String $service_restart,
+) {
+  service { $service_names:
+    enable    => true,
+    hasstatus => false,
+    restart   => $service_restart,
+  }
 }
