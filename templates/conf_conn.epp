@@ -1,10 +1,7 @@
 # conn definition for <%= $name %>
 
 conn <%= $name %>
-<% 
-if $aaa_identity { %>
-  aaa_identity = <%= $aaa_identity %>
-<% }
+<%
 if $aaa_identity { %>  aaa_identity = <%= "${aaa_identity}\n" %><% }
 if $ah { %>  ah = <%= "${ah}\n" %><% }
 if $aggressive { %>  aggressive = <%= "${aggressive}\n" %><% }
