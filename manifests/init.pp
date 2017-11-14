@@ -1,8 +1,8 @@
 # ipsec
 #
-# This is the main entry point and single resource to be instanciated in your puppet code.
+# This is the main entry point and the main resource to be instanciated in your puppet code.
 #
-# @summary Main entry point to this module and the only resource to be instanciated.
+# @summary Main entry point to this module.
 #
 # @example
 #   include ipsec
@@ -10,7 +10,9 @@
 # @param ensure ensure meta-parameter to add or remove config done by this module
 # @param secrets array of secrets to be added to ipsec.secrets
 # @param secret_includes array of paths to files to be included to ipsec.secrets
-# @param conf Hash of ipsec.conf entries; for details see [https://wiki.strongswan.org/projects/strongswan/wiki/IpsecConf]
+# @param conf Hash of ipsec.conf entries; for details see IpsecConf documentation
+#
+# @see https://wiki.strongswan.org/projects/strongswan/wiki/IpsecConf
 #
 class ipsec (
   Enum['present', 'absent']   $ensure,
