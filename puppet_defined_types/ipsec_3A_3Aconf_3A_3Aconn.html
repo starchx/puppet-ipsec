@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Defined Type: ipsec::conf::conn
+  
+    &mdash; Documentation by YARD 0.9.9
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "puppet_defined_types::ipsec::conf::conn";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../puppet_defined_type_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (i)</a> &raquo;
+    <span class='title'><span class='object_link'>Defined Types</span></span>
+     &raquo; 
+    <span class="title">ipsec::conf::conn</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="puppet_class_list_link"
+        href="../puppet_class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Defined Type: ipsec::conf::conn</h1>
+<div class="box_info">
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>
+      manifests/conf/conn.pp
+    </dd>
+  </dl>
+</div>
+
+  <h2>Summary</h2>
+  A short summary of the purpose of this defined type.
+
+<h2>Overview</h2>
+<div class="docstring">
+  <div class="discussion">
+    
+<p>ipsec::conf::conn</p>
+
+<p>A description of what this defined type does</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>ipsec::conf::conn { &#39;namevar&#39;: }</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>aaa_identity</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ah</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aggressive</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>also</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>authby</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum[
+    'pubkey',
+    'rsasig',
+    'ecdsasig',
+    'pdk',
+    'secret',
+    'xauthrsasig',
+    'xauthpsk',
+    'never'
+  ]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>auto</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum[
+    'ignore',
+    'add',
+    'route',
+    'start'
+  ]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>closeaction</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum[
+    'none',
+    'clear',
+    'hold',
+    'restart'
+  ]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>compress</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dpdaction</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum[
+    'none',
+    'clear',
+    'hold',
+    'restart'
+  ]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dpddelay</span>
+      
+      
+        <span class='type'>(<tt>Optional[Ipsec::Time]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dpdtimeout</span>
+      
+      
+        <span class='type'>(<tt>Optional[Ipsec::Time]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>inactivity</span>
+      
+      
+        <span class='type'>(<tt>Optional[Ipsec::Time]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>eap_identity</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>esp</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>forceencaps</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>fragmentation</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum[
+    'yes',
+    'accept',
+    'force',
+    'no'
+  ]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ike</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ikedscp</span>
+      
+      
+        <span class='type'>(<tt>Optional[
+    Pattern[/^[0-9]{6}$/]
+  ]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ikelifetime</span>
+      
+      
+        <span class='type'>(<tt>Optional[Ipsec::Time]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>installpolicy</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>keyexchange</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum[
+    'ike',
+    'ikev1',
+    'ikev2'
+  ]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>keyingtries</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>lifebytes</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>lifepackets</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>lifetime</span>
+      
+      
+        <span class='type'>(<tt>Optional[Ipsec::Time]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>marginbytes</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>marginpackets</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>margintime</span>
+      
+      
+        <span class='type'>(<tt>Optional[Ipsec::Time]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mark</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mark_in</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mark_out</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mobike</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>modeconfig</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum[
+    'push',
+    'pull'
+  ]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>reauth</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rekey</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rekeyfuzz</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>replay_window</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>reqid</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>sha256_96</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>tfc</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum[
+    'tunnel',
+    'transport',
+    'transport_proxy',
+    'passthrough',
+    'drop'
+  ]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>xauth</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum[
+    'client',
+    'server'
+  ]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>xauth_identity</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>left</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>right</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftallowany</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightallowany</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftauth</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightauth</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftauth2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightauth2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftca</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightca</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftca2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightca2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftcert</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightcert</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftcert2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightcert2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftcertpolicy</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightcertpolicy</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftdns</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightdns</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftfirewall</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightfirewall</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftgroups</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightgroups</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftgroups2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightgroups2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>lefthostaccess</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>righthostaccess</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftid</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightid</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftid2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightid2</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftikeport</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightikeport</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftprotoport</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightprotoport</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftrsasigkey</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightrsasigkey</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftsigkey</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightsigkey</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftsendcert</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightsendcert</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftsourceip</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightsourceip</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftsubnet</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightsubnet</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leftupdown</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rightupdown</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mediation</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['yes','no']]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mediated_by</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>me_peerid</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><div class="method_details_list">
+  <table class="source_code">
+    <tr>
+      <td>
+        <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253</pre>
+      </td>
+      <td>
+        <pre class="code"><span class="info file"># File 'manifests/conf/conn.pp', line 9</span>
+
+define ipsec::conf::conn(
+  Optional[String]           $aaa_identity = undef,
+  Optional[String]           $ah = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $aggressive = undef,
+  Optional[String]           $also = undef,
+  Optional[Enum[
+    &#39;pubkey&#39;,
+    &#39;rsasig&#39;,
+    &#39;ecdsasig&#39;,
+    &#39;pdk&#39;,
+    &#39;secret&#39;,
+    &#39;xauthrsasig&#39;,
+    &#39;xauthpsk&#39;,
+    &#39;never&#39;
+  ]]                         $authby = undef,
+  Optional[Enum[
+    &#39;ignore&#39;,
+    &#39;add&#39;,
+    &#39;route&#39;,
+    &#39;start&#39;
+  ]]                         $auto = undef,
+  Optional[Enum[
+    &#39;none&#39;,
+    &#39;clear&#39;,
+    &#39;hold&#39;,
+    &#39;restart&#39;
+  ]]                         $closeaction = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $compress = undef,
+  Optional[Enum[
+    &#39;none&#39;,
+    &#39;clear&#39;,
+    &#39;hold&#39;,
+    &#39;restart&#39;
+  ]]                         $dpdaction = undef,
+  Optional[Ipsec::Time]      $dpddelay = undef,
+  Optional[Ipsec::Time]      $dpdtimeout = undef,
+  Optional[Ipsec::Time]      $inactivity = undef,
+  Optional[String]           $eap_identity = undef,
+  Optional[String]           $esp = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $forceencaps = undef,
+  Optional[Enum[
+    &#39;yes&#39;,
+    &#39;accept&#39;,
+    &#39;force&#39;,
+    &#39;no&#39;
+  ]]                         $fragmentation = undef,
+  Optional[String]           $ike = undef,
+  Optional[
+    Pattern[/^[0-9]{6}$/]
+  ]                          $ikedscp = undef,
+  Optional[Ipsec::Time]      $ikelifetime = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $installpolicy = undef,
+  Optional[Enum[
+    &#39;ike&#39;,
+    &#39;ikev1&#39;,
+    &#39;ikev2&#39;
+  ]]                         $keyexchange = undef,
+  Optional[String]           $keyingtries = undef,
+  Optional[Integer]          $lifebytes = undef,
+  Optional[Integer]          $lifepackets = undef,
+  Optional[Ipsec::Time]      $lifetime = undef,
+  Optional[Integer]          $marginbytes = undef,
+  Optional[Integer]          $marginpackets = undef,
+  Optional[Ipsec::Time]      $margintime = undef,
+  Optional[String]           $mark = undef,
+  Optional[String]           $mark_in = undef,
+  Optional[String]           $mark_out = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $mobike = undef,
+  Optional[Enum[
+    &#39;push&#39;,
+    &#39;pull&#39;
+  ]]                         $modeconfig = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $reauth = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $rekey = undef,
+  Optional[String]           $rekeyfuzz = undef,
+  Optional[Integer]          $replay_window = undef,
+  Optional[Integer]          $reqid = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $sha256_96 = undef,
+  Optional[Integer]          $tfc = undef,
+  Optional[Enum[
+    &#39;tunnel&#39;,
+    &#39;transport&#39;,
+    &#39;transport_proxy&#39;,
+    &#39;passthrough&#39;,
+    &#39;drop&#39;
+  ]]                         $type = undef,
+  Optional[Enum[
+    &#39;client&#39;,
+    &#39;server&#39;
+  ]]                         $xauth = undef,
+  Optional[String]           $xauth_identity = undef,
+  Optional[String]           $left = undef,
+  Optional[String]           $right = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $leftallowany = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $rightallowany = undef,
+  Optional[String]           $leftauth = undef,
+  Optional[String]           $rightauth = undef,
+  Optional[String]           $leftauth2 = undef,
+  Optional[String]           $rightauth2 = undef,
+  Optional[String]           $leftca = undef,
+  Optional[String]           $rightca = undef,
+  Optional[String]           $leftca2 = undef,
+  Optional[String]           $rightca2 = undef,
+  Optional[String]           $leftcert = undef,
+  Optional[String]           $rightcert = undef,
+  Optional[String]           $leftcert2 = undef,
+  Optional[String]           $rightcert2 = undef,
+  Optional[String]           $leftcertpolicy = undef,
+  Optional[String]           $rightcertpolicy = undef,
+  Optional[String]           $leftdns = undef,
+  Optional[String]           $rightdns = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $leftfirewall = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $rightfirewall = undef,
+  Optional[String]           $leftgroups = undef,
+  Optional[String]           $rightgroups = undef,
+  Optional[String]           $leftgroups2 = undef,
+  Optional[String]           $rightgroups2 = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $lefthostaccess = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $righthostaccess = undef,
+  Optional[String]           $leftid = undef,
+  Optional[String]           $rightid = undef,
+  Optional[String]           $leftid2 = undef,
+  Optional[String]           $rightid2 = undef,
+  Optional[Integer]          $leftikeport = undef,
+  Optional[Integer]          $rightikeport = undef,
+  Optional[String]           $leftprotoport = undef,
+  Optional[String]           $rightprotoport = undef,
+  Optional[String]           $leftrsasigkey = undef,
+  Optional[String]           $rightrsasigkey = undef,
+  Optional[String]           $leftsigkey = undef,
+  Optional[String]           $rightsigkey = undef,
+  Optional[String]           $leftsendcert = undef,
+  Optional[String]           $rightsendcert = undef,
+  Optional[String]           $leftsourceip = undef,
+  Optional[String]           $rightsourceip = undef,
+  Optional[String]           $leftsubnet = undef,
+  Optional[String]           $rightsubnet = undef,
+  Optional[String]           $leftupdown = undef,
+  Optional[String]           $rightupdown = undef,
+  Optional[Enum[&#39;yes&#39;,&#39;no&#39;]] $mediation = undef,
+  Optional[String]           $mediated_by = undef,
+  Optional[String]           $me_peerid = undef,
+) {
+  concat::fragment{ &quot;conn ${name}&quot;:
+    target  =&gt; lookup(&#39;ipsec::config::conf_file&#39;),
+    order   =&gt; 3,
+    content =&gt; epp(&#39;ipsec/conf_conn.epp&#39;, {
+      &#39;name&#39;            =&gt; $title,
+      &#39;aaa_identity&#39;    =&gt; $aaa_identity,
+      &#39;ah&#39;              =&gt; $ah,
+      &#39;aggressive&#39;      =&gt; $aggressive,
+      &#39;also&#39;            =&gt; $also,
+      &#39;authby&#39;          =&gt; $authby,
+      &#39;auto&#39;            =&gt; $auto,
+      &#39;closeaction&#39;     =&gt; $closeaction,
+      &#39;compress&#39;        =&gt; $compress,
+      &#39;dpdaction&#39;       =&gt; $dpdaction,
+      &#39;dpddelay&#39;        =&gt; $dpddelay,
+      &#39;dpdtimeout&#39;      =&gt; $dpdtimeout,
+      &#39;inactivity&#39;      =&gt; $inactivity,
+      &#39;eap_identity&#39;    =&gt; $eap_identity,
+      &#39;esp&#39;             =&gt; $esp,
+      &#39;forceencaps&#39;     =&gt; $forceencaps,
+      &#39;fragmentation&#39;   =&gt; $fragmentation,
+      &#39;ike&#39;             =&gt; $ike,
+      &#39;ikedscp&#39;         =&gt; $ikedscp,
+      &#39;ikelifetime&#39;     =&gt; $ikelifetime,
+      &#39;installpolicy&#39;   =&gt; $installpolicy,
+      &#39;keyexchange&#39;     =&gt; $keyexchange,
+      &#39;keyingtries&#39;     =&gt; $keyingtries,
+      &#39;lifebytes&#39;       =&gt; $lifebytes,
+      &#39;lifepackets&#39;     =&gt; $lifepackets,
+      &#39;lifetime&#39;        =&gt; $lifetime,
+      &#39;marginbytes&#39;     =&gt; $marginbytes,
+      &#39;marginpackets&#39;   =&gt; $marginpackets,
+      &#39;margintime&#39;      =&gt; $margintime,
+      &#39;mark&#39;            =&gt; $mark,
+      &#39;mark_in&#39;         =&gt; $mark_in,
+      &#39;mark_out&#39;        =&gt; $mark_out,
+      &#39;mobike&#39;          =&gt; $mobike,
+      &#39;modeconfig&#39;      =&gt; $modeconfig,
+      &#39;reauth&#39;          =&gt; $reauth,
+      &#39;rekey&#39;           =&gt; $rekey,
+      &#39;rekeyfuzz&#39;       =&gt; $rekeyfuzz,
+      &#39;replay_window&#39;   =&gt; $replay_window,
+      &#39;reqid&#39;           =&gt; $reqid,
+      &#39;sha256_96&#39;       =&gt; $sha256_96,
+      &#39;tfc&#39;             =&gt; $tfc,
+      &#39;type&#39;            =&gt; $type,
+      &#39;xauth&#39;           =&gt; $xauth,
+      &#39;xauth_identity&#39;  =&gt; $xauth_identity,
+      &#39;left&#39;            =&gt; $left,
+      &#39;right&#39;           =&gt; $right,
+      &#39;leftallowany&#39;    =&gt; $leftallowany,
+      &#39;rightallowany&#39;   =&gt; $rightallowany,
+      &#39;leftauth&#39;        =&gt; $leftauth,
+      &#39;rightauth&#39;       =&gt; $rightauth,
+      &#39;leftauth2&#39;       =&gt; $leftauth2,
+      &#39;rightauth2&#39;      =&gt; $rightauth2,
+      &#39;leftca&#39;          =&gt; $leftca,
+      &#39;rightca&#39;         =&gt; $rightca,
+      &#39;leftca2&#39;         =&gt; $leftca2,
+      &#39;rightca2&#39;        =&gt; $rightca2,
+      &#39;leftcert&#39;        =&gt; $leftcert,
+      &#39;rightcert&#39;       =&gt; $rightcert,
+      &#39;leftcert2&#39;       =&gt; $leftcert2,
+      &#39;rightcert2&#39;      =&gt; $rightcert2,
+      &#39;leftcertpolicy&#39;  =&gt; $leftcertpolicy,
+      &#39;rightcertpolicy&#39; =&gt; $rightcertpolicy,
+      &#39;leftdns&#39;         =&gt; $leftdns,
+      &#39;rightdns&#39;        =&gt; $rightdns,
+      &#39;leftfirewall&#39;    =&gt; $leftfirewall,
+      &#39;rightfirewall&#39;   =&gt; $rightfirewall,
+      &#39;leftgroups&#39;      =&gt; $leftgroups,
+      &#39;rightgroups&#39;     =&gt; $rightgroups,
+      &#39;leftgroups2&#39;     =&gt; $leftgroups2,
+      &#39;rightgroups2&#39;    =&gt; $rightgroups2,
+      &#39;lefthostaccess&#39;  =&gt; $lefthostaccess,
+      &#39;righthostaccess&#39; =&gt; $righthostaccess,
+      &#39;leftid&#39;          =&gt; $leftid,
+      &#39;rightid&#39;         =&gt; $rightid,
+      &#39;leftid2&#39;         =&gt; $leftid2,
+      &#39;rightid2&#39;        =&gt; $rightid2,
+      &#39;leftikeport&#39;     =&gt; $leftikeport,
+      &#39;rightikeport&#39;    =&gt; $rightikeport,
+      &#39;leftprotoport&#39;   =&gt; $leftprotoport,
+      &#39;rightprotoport&#39;  =&gt; $rightprotoport,
+      &#39;leftrsasigkey&#39;   =&gt; $leftrsasigkey,
+      &#39;rightrsasigkey&#39;  =&gt; $rightrsasigkey,
+      &#39;leftsigkey&#39;      =&gt; $leftsigkey,
+      &#39;rightsigkey&#39;     =&gt; $rightsigkey,
+      &#39;leftsendcert&#39;    =&gt; $leftsendcert,
+      &#39;rightsendcert&#39;   =&gt; $rightsendcert,
+      &#39;leftsourceip&#39;    =&gt; $leftsourceip,
+      &#39;rightsourceip&#39;   =&gt; $rightsourceip,
+      &#39;leftsubnet&#39;      =&gt; $leftsubnet,
+      &#39;rightsubnet&#39;     =&gt; $rightsubnet,
+      &#39;leftupdown&#39;      =&gt; $leftupdown,
+      &#39;rightupdown&#39;     =&gt; $rightupdown,
+      &#39;mediation&#39;       =&gt; $mediation,
+      &#39;mediated_by&#39;     =&gt; $mediated_by,
+      &#39;me_peerid&#39;       =&gt; $me_peerid,
+    }),
+  }
+}</pre>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+      <div id="footer">
+  Generated on Tue Nov 14 12:52:19 2017 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.9 (ruby-2.4.2).
+</div>
+
+    </div>
+  </body>
+</html>
