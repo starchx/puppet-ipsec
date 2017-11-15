@@ -59,6 +59,16 @@ describe 'ipsec' do
             .with_content(%r{^include /etc/ipsec.d/very.secret$})
         end
       end
+      describe 'service' do
+        it do
+          is_expected.to contain_service('strongswan')
+            .with(
+              'enable'    => true,
+              'hasstatus' => false,
+              'restart'   => '/usr/sbin/ipsec reload',
+            )
+        end
+      end
     end
   end
 end

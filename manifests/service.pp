@@ -8,7 +8,7 @@ class ipsec::service (
   String $service_name,
   String $service_restart,
 ) {
-  service { $service_names:
+  service { $service_name:
     enable    => true,
     hasstatus => false,
     restart   => $service_restart,
