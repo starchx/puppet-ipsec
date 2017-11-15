@@ -1,11 +1,24 @@
 # ipsec::conf::conn
+# All instances of ipsec::conf::ca resource will create ca sections within ipsec.conf file.
+# However, ipsec::conf does contain a factory which creates these instanses from parameter
+# ipsec::conf['authorities'], it is allowed to create instances directly.
 #
-# A description of what this defined type does
+# The resource takes parameter as described in Strongswan documentation (see link below).
 #
-# @summary A short summary of the purpose of this defined type.
+# @summary Create a ca section within ipsec.conf file.
 #
 # @example
-#   ipsec::conf::conn { 'namevar': }
+#   ipsec::conf::conn { 'test':
+#      type     => 'transport',
+#      left     => '%any'
+#      leftcert => 'hostcert.pem',
+#      right    => '192.168.56.1',
+#      rightid  => '%any',
+#      auto     => 'route',
+#   }
+#
+# @see https://wiki.strongswan.org/projects/strongswan/wiki/CaSection
+#
 define ipsec::conf::conn(
   Optional[String]           $aaa_identity = undef,
   Optional[String]           $ah = undef,

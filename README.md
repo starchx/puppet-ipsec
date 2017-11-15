@@ -1,16 +1,6 @@
 
 # ipsec
 
-Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://docs.puppet.com/pdk/1.0/pdk_generating_modules.html#module-contents .
-
-Below you'll find the default README template ready for some content.
-
-
-
-
-
-
-
 #### Table of Contents
 
 1. [Description](#description)
@@ -25,27 +15,9 @@ Below you'll find the default README template ready for some content.
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what problem it solves. This is your 30-second elevator pitch for your module. Consider including OS/Puppet version it works with.       
-
-You can give more descriptive information in a second paragraph. This paragraph should answer the questions: "What does this module *do*?" and "Why would I use it?" If your module has a range of functionality (installation, configuration, management, etc.), this is the time to mention it.
+This puppet module is providing facility to install and configure ipsec settings. Currently using strongswan, it manages package installation, the contents of configuration files ipsec.secrets and ipsec.conf and controlling the service itself in order to reload configurations after changes. The module is designed to be fully configurable through parameter lookup, but it also allowes you to manage configuration artefacts via resource instances.
 
 ## Setup
-
-### What ipsec affects **OPTIONAL**
-
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, another module, etc.), mention it here. 
-  
-If your most recent release breaks compatibility or requires particular steps for upgrading, you might want to include an additional "Upgrading" section here.
 
 ### Beginning with ipsec  
 
@@ -53,24 +25,134 @@ The very basic steps needed for a user to get the module up and running. This ca
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the fancy stuff with your module here. It's especially helpful if you include usage examples and code samples for doing things with your module.
+To get startet with this module, simply include the module into your puppet manifest. Passing parameter values may happen by direct assignment or preferably via lookup.
+
+```puppet
+include ipsec
+```
+
+The module will install strongswan on the affected nodes and care about the service to be enabled.
+
+### Defining secrets
+To add your secrets to the ```ipsec.secrets``` file, there are two options. Passing the actual secrets to the module via ```ipsec::secrets``` parameter or adding includes to the secrets file and file the secrets through other tools.
+
+```yaml
+ipsec::secrets: 
+  - selector: '@example.org'
+    secret:
+      type: PSK
+      passphrase: 'asdf1234'
+  - selector: 'rsa-a.example.org'
+    secret:
+      type: RSA
+      private_key_file: '/etc/ipsec.d/private/host-a.key'
+      prompt: true
+  - selector: 'rsa-b.example.org'
+    secret:
+      type: RSA
+      private_key_file: '/etc/ipsec.d/private/host-b.key'
+      passphrase: 'asdf1234'
+  - secret:
+      type: RSA
+      private_key_file: '/etc/ipsec.d/private/host-def.key'
+  - secret:
+      type: PIN
+      slotnr: 1
+      keyid: 50
+      pin: 1234
+  - secret:
+      type: PIN
+      slotnr: 1
+      module: opensc
+      keyid: 45
+      prompt: true
+```
+
+Note, that non of the above used secrets (passphrase or pin fields) are treated as sensitive content.
+
+The other option is to use parameter ```ipsec::secret_includes``` to include files.
+
+```yaml
+ipsec::secret_includes:
+  - '/var/lib/strongswan/ipsec.secrets.inc'
+  - '/etc/ipsec.d/very.secret'
+```
 
 ## Reference
 
-Users need a complete list of your module's classes, types, defined types providers, facts, and functions, along with the parameters for each. You can provide this list either via Puppet Strings code comments or as a complete list in the README Reference section.
+* Reference documentation is created by Puppet Strings code comments, and published as gh_pages at [https://rtib.github.io/puppet-ipsec/].
 
-* If you are using Puppet Strings code comments, this Reference section should include Strings information so that your users know how to access your documentation.
+### Data types
+The module introduces some custom data types, which are not contained in the above reference.
 
-* If you are not using Puppet Strings, include a list of all of your classes, defined types, and so on, along with their parameters. Each element in this listing should include:
+#### Ipsec::Time
+Represents a time value as used in Strongswan configuration. Consisting of one or more numerals and an optional suffix, which designate the dimensions of seconds (s), minutes (m), hours (h) or days (d).
 
-  * The data type, if applicable.
-  * A description of what the element does.
-  * Valid values, if the data type doesn't make it obvious.
-  * Default value, if any.
+```puppet
+type Ipsec::Time = Pattern[/^[0-9]+[smhd]?$/]
+```
+
+#### Ipsec::Secret
+The custom data structure to handle different types of secrets configuration for Strongswan is a bit more complex. It consists of an optional selector and a secret, which is a varian of some sub-types. The outer structure is defined as
+
+```puppet
+type Ipsec::Secret = Struct[{
+  selector => Optional[Pattern[/[^:]*/]],
+  secret   => Variant[
+    Ipsec::Secret::Privkey,
+    Ipsec::Secret::Shared,
+    Ipsec::Secret::Smartcard,
+  ],
+}]
+```
+
+Each sub-type does have a mandatory field named type, which may decide on the applicability of the particular type.
+
+#### Ipsec::Secret::Shared
+The custom type for shared secrets is handling types ```PSK```, ```EAP``` and ```XAUTH``` and storing the passphrase as string.
+
+```puppet
+type Ipsec::Secret::Shared = Struct[{
+  type       => Enum['PSK','EAP','XAUTH'],
+  passphrase => String,
+}]
+```
+
+Note! The passphrase is not treated as sensitive data. Use this feature of the module with care, only in the case no other solution is possible. The secrets_include parameter is providing feature to ipsec.secrets which may support other solutions for handling secret passphrase.
+
+#### Ipsec::Secret::Privkey
+Private key type secrets has one of types ```RSA```, ```ECDSA``` or ```P12```. All Privkey secrets does need a private_key_file pointing to the file path the secret key is found. It the private key needs to be unlocked, a passphrase may be filed or the prompt option enabled.
+
+```puppet
+type Ipsec::Secret::Privkey = Struct[{
+  type             => Enum['RSA','ECDSA','P12'],
+  private_key_file => Stdlib::Absolutepath,
+  prompt           => Optional[Boolean],
+  passphrase       => Optional[String],
+}]
+```
+
+Note! The passphrase is not treated as sensitive data. Use this feature with care, only in the case no other solution is possible. The secrets_include parameter is providing feature to ipsec.secrets which may support other solutions for handling secret passphrase.
+
+#### Ipsec::Secret::Smartcard
+Smartcard based authentication is supported by a secret with type ```PIN```, which mandatory takes a keyid parameter, and optional the slotnr, module name. If the card needs to be unlocked, a pin may be filed or the prompt option enabled.
+
+```puppet
+type Ipsec::Secret::Smartcard = Struct[{
+  type   => Enum['PIN'],
+  slotnr => Optional[Integer],
+  module => Optional[String],
+  keyid  => Integer,
+  pin    => Optional[Integer],
+  prompt => Optional[Boolean],
+}]
+```
+
+Note! The pin is not treated as sensitive data. Use this feature with care, only in the case no other solution is possible. The secrets_include parameter is providing feature to ipsec.secrets which may support other solutions for handling secret pin.
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there are Known Issues, you might want to include them under their own heading here.
+The module is currently tested for a few OS distributions only and needs contribution to be ported and tested on others. There are features Strongswan is providing but cannot be configured with this module, e.g. NTLM based authentication. Feel free to contribute missing features. 
 
 ## Development
 

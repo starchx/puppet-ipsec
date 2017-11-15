@@ -1,11 +1,22 @@
 # ipsec::conf::ca
 #
-# A description of what this defined type does
+# All instances of ipsec::conf::ca resource will create ca sections within ipsec.conf file.
+# However, ipsec::conf does contain a factory which creates these instanses from parameter
+# ipsec::conf['authorities'], it is allowed to create instances directly.
 #
-# @summary A short summary of the purpose of this defined type.
+# The resource takes parameter as described in Strongswan documentation (see link below).
+#
+# @summary Create a ca section within ipsec.conf file.
 #
 # @example
-#   ipsec::conf::ca { 'namevar': }
+#   ipsec::conf::ca { 'myca':
+#     auto   => 'add',
+#     cacert => '/etc/ssl/certs/myca.pem',
+#     crluri => 'file:///etc/ssl/crls/myca_crl.pem'
+#   }
+#
+# @see https://wiki.strongswan.org/projects/strongswan/wiki/CaSection
+#
 define ipsec::conf::ca(
   Optional[String]               $also = undef,
   Optional[Enum['ignore','add']] $auto = undef,
