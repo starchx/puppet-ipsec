@@ -115,6 +115,53 @@ preferably via lookup.</p>
 <p>The module will install strongswan on the affected nodes and care about the
 service to be enabled.</p>
 
+<h3 id="label-Defining+secrets">Defining secrets</h3>
+
+<p>To add your secrets to the <code>ipsec.secrets</code> file, there are two
+options. Passing the actual secrets to the module via
+<code>ipsec::secrets</code> parameter or adding includes to the secrets
+file and file the secrets through other tools.</p>
+
+<pre class="code ruby"><code class="ruby">ipsec::secrets: 
+  - selector: &#39;@example.org&#39;
+    secret:
+      type: PSK
+      passphrase: &#39;asdf1234&#39;
+  - selector: &#39;rsa-a.example.org&#39;
+    secret:
+      type: RSA
+      private_key_file: &#39;/etc/ipsec.d/private/host-a.key&#39;
+      prompt: true
+  - selector: &#39;rsa-b.example.org&#39;
+    secret:
+      type: RSA
+      private_key_file: &#39;/etc/ipsec.d/private/host-b.key&#39;
+      passphrase: &#39;asdf1234&#39;
+  - secret:
+      type: RSA
+      private_key_file: &#39;/etc/ipsec.d/private/host-def.key&#39;
+  - secret:
+      type: PIN
+      slotnr: 1
+      keyid: 50
+      pin: 1234
+  - secret:
+      type: PIN
+      slotnr: 1
+      module: opensc
+      keyid: 45
+      prompt: true</code></pre>
+
+<p>Note, that non of the above used secrets (passphrase or pin fields) are
+treated as sensitive content.</p>
+
+<p>The other option is to use parameter <code>ipsec::secret_includes</code> to
+include files.</p>
+
+<pre class="code ruby"><code class="ruby">ipsec::secret_includes:
+  - &#39;/var/lib/strongswan/ipsec.secrets.inc&#39;
+  - &#39;/etc/ipsec.d/very.secret&#39;</code></pre>
+
 <h2 id="label-Reference">Reference</h2>
 <ul><li>
 <p>Reference documentation is created by Puppet Strings code comments, and
@@ -236,7 +283,7 @@ you feel are necessary or important to include here. Please use the
 </div></div>
 
       <div id="footer">
-  Generated on Wed Nov 15 16:18:34 2017 by
+  Generated on Wed Nov 15 16:26:31 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.2).
 </div>
