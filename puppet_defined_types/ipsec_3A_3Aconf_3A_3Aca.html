@@ -70,7 +70,7 @@
 </div>
 
   <h2>Summary</h2>
-  A short summary of the purpose of this defined type.
+  Create a ca section within ipsec.conf file.
 
 <h2>Overview</h2>
 <div class="docstring">
@@ -78,7 +78,13 @@
     
 <p>ipsec::conf::ca</p>
 
-<p>A description of what this defined type does</p>
+<p>All instances of ipsec::conf::ca resource will create ca sections within
+ipsec.conf file. However, ipsec::conf does contain a factory which creates
+these instanses from parameter <a href="'authorities'">ipsec::conf</a>, it
+is allowed to create instances directly.</p>
+
+<p>The resource takes parameter as described in Strongswan documentation (see
+link below).</p>
 
   </div>
 </div>
@@ -88,7 +94,11 @@
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code"><code>ipsec::conf::ca { &#39;namevar&#39;: }</code></pre>
+      <pre class="example code"><code>ipsec::conf::ca { &#39;myca&#39;:
+  auto   =&gt; &#39;add&#39;,
+  cacert =&gt; &#39;/etc/ssl/certs/myca.pem&#39;,
+  crluri =&gt; &#39;file:///etc/ssl/crls/myca_crl.pem&#39;
+}</code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -214,6 +224,13 @@
 </ul>
 
 
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://wiki.strongswan.org/projects/strongswan/wiki/CaSection" target="_parent" title="https://wiki.strongswan.org/projects/strongswan/wiki/CaSection">https://wiki.strongswan.org/projects/strongswan/wiki/CaSection</a></li>
+    
+  </ul>
+
 </div><div class="method_details_list">
   <table class="source_code">
     <tr>
@@ -221,17 +238,6 @@
         <pre class="lines">
 
 
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
 20
 21
 22
@@ -249,10 +255,21 @@
 34
 35
 36
-37</pre>
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/conf/ca.pp', line 9</span>
+        <pre class="code"><span class="info file"># File 'manifests/conf/ca.pp', line 20</span>
 
 define ipsec::conf::ca(
   Optional[String]               $also = undef,
@@ -290,7 +307,7 @@ define ipsec::conf::ca(
 </div>
 
       <div id="footer">
-  Generated on Tue Nov 14 12:52:19 2017 by
+  Generated on Wed Nov 15 12:40:30 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.2).
 </div>
