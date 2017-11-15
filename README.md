@@ -1,7 +1,10 @@
-
 # ipsec
 
-#### Table of Contents
+[![Build Status](https://travis-ci.org/rtib/puppet-ipsec.svg?branch=master)](https://travis-ci.org/rtib/puppet-ipsec)
+[![GitHub issues](https://img.shields.io/github/issues/rtib/puppet-ipsec.svg)](https://github.com/rtib/puppet-ipsec/issues)
+[![GitHub license](https://img.shields.io/github/license/rtib/puppet-ipsec.svg)](https://github.com/rtib/puppet-ipsec/blob/master/LICENSE)
+
+## Table of Contents
 
 1. [Description](#description)
 2. [Setup - The basics of getting started with ipsec](#setup)
@@ -19,7 +22,7 @@ This puppet module is providing facility to install and configure ipsec settings
 
 ## Setup
 
-### Beginning with ipsec  
+### Beginning with ipsec
 
 The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
 
@@ -34,10 +37,11 @@ include ipsec
 The module will install strongswan on the affected nodes and care about the service to be enabled.
 
 ### Defining secrets
+
 To add your secrets to the ```ipsec.secrets``` file, there are two options. Passing the actual secrets to the module via ```ipsec::secrets``` parameter or adding includes to the secrets file and file the secrets through other tools.
 
 ```yaml
-ipsec::secrets: 
+ipsec::secrets:
   - selector: '@example.org'
     secret:
       type: PSK
@@ -78,14 +82,51 @@ ipsec::secret_includes:
   - '/etc/ipsec.d/very.secret'
 ```
 
+### Creating configuration
+
+IPSec configuration is handled within ```ipsec.conf``` file. This consists of sections of three types. All sections can be handled via ```ipsec::conf``` parameter. The setup secion is a singleton section, therefore it is handled only via the conf parameter.
+
+#### Setup section
+
+The hash passed in through ```ipsec::conf['setup']``` is placed as key-value pairs into the setup section of the ```ipsec.conf``` file.
+
+#### Authority sections
+
+The ```ipsec.conf``` file may contain multiple ca sections each configuring a certification authority. These section may be created via ```ipsec::conf['authorities']``` parameter.
+
+
+```yaml
+ipsec::conf:
+  authorities:
+    myca:
+      auto: add
+      cacert: '/etc/ssl/certs/myca.pem'
+      crluri: 'file:///etc/ssl/crls/myca_crl.pem'
+```
+
+Alternatively, ca sections can be created by resource instances of type ipsec::conf::ca.
+
+```puppet
+ipsec::conf::ca { 'myca':
+  auto   => 'add',
+  cacert => '/etc/ssl/certs/myca.pem',
+  crluri => 'file:///etc/ssl/crls/myca_crl.pem'
+```
+
+### Defining authorities
+
+To define certification authorities, 
+
 ## Reference
 
 * Reference documentation is created by Puppet Strings code comments, and published as gh_pages at [https://rtib.github.io/puppet-ipsec/].
 
 ### Data types
+
 The module introduces some custom data types, which are not contained in the above reference.
 
 #### Ipsec::Time
+
 Represents a time value as used in Strongswan configuration. Consisting of one or more numerals and an optional suffix, which designate the dimensions of seconds (s), minutes (m), hours (h) or days (d).
 
 ```puppet
@@ -93,6 +134,7 @@ type Ipsec::Time = Pattern[/^[0-9]+[smhd]?$/]
 ```
 
 #### Ipsec::Secret
+
 The custom data structure to handle different types of secrets configuration for Strongswan is a bit more complex. It consists of an optional selector and a secret, which is a varian of some sub-types. The outer structure is defined as
 
 ```puppet
@@ -109,6 +151,7 @@ type Ipsec::Secret = Struct[{
 Each sub-type does have a mandatory field named type, which may decide on the applicability of the particular type.
 
 #### Ipsec::Secret::Shared
+
 The custom type for shared secrets is handling types ```PSK```, ```EAP``` and ```XAUTH``` and storing the passphrase as string.
 
 ```puppet
@@ -121,6 +164,7 @@ type Ipsec::Secret::Shared = Struct[{
 Note! The passphrase is not treated as sensitive data. Use this feature of the module with care, only in the case no other solution is possible. The secrets_include parameter is providing feature to ipsec.secrets which may support other solutions for handling secret passphrase.
 
 #### Ipsec::Secret::Privkey
+
 Private key type secrets has one of types ```RSA```, ```ECDSA``` or ```P12```. All Privkey secrets does need a private_key_file pointing to the file path the secret key is found. It the private key needs to be unlocked, a passphrase may be filed or the prompt option enabled.
 
 ```puppet
@@ -135,6 +179,7 @@ type Ipsec::Secret::Privkey = Struct[{
 Note! The passphrase is not treated as sensitive data. Use this feature with care, only in the case no other solution is possible. The secrets_include parameter is providing feature to ipsec.secrets which may support other solutions for handling secret passphrase.
 
 #### Ipsec::Secret::Smartcard
+
 Smartcard based authentication is supported by a secret with type ```PIN```, which mandatory takes a keyid parameter, and optional the slotnr, module name. If the card needs to be unlocked, a pin may be filed or the prompt option enabled.
 
 ```puppet
@@ -152,7 +197,7 @@ Note! The pin is not treated as sensitive data. Use this feature with care, only
 
 ## Limitations
 
-The module is currently tested for a few OS distributions only and needs contribution to be ported and tested on others. There are features Strongswan is providing but cannot be configured with this module, e.g. NTLM based authentication. Feel free to contribute missing features. 
+The module is currently tested for a few OS distributions only and needs contribution to be ported and tested on others. There are features Strongswan is providing but cannot be configured with this module, e.g. NTLM based authentication. Feel free to contribute missing features.
 
 ## Development
 
