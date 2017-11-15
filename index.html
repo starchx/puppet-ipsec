@@ -131,18 +131,27 @@ the above reference.</p>
 
 <p>Represents a time value as used in Strongswan configuration. Consisting of
 one or more numerals and an optional suffix, which designate the dimensions
-of seconds (s), minutes (m), hours (h) or days (d). <code>puppet type
-Ipsec::Time = Pattern[/^[0-9]+[smhd]?$/] </code></p>
+of seconds (s), minutes (m), hours (h) or days (d).</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_type'>type</span> <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Time</span> <span class='op'>=</span> <span class='const'>Pattern</span><span class='lbracket'>[</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^[0-9]+[smhd]?$</span><span class='regexp_end'>/</span></span><span class='rbracket'>]</span>
+</code></pre>
 
 <h4 id="label-Ipsec-3A-3ASecret">Ipsec::Secret</h4>
 
 <p>The custom data structure to handle different types of secrets
 configuration for Strongswan is a bit more complex. It consists of an
 optional selector and a secret, which is a varian of some sub-types. The
-outer structure is defined as <code>puppet type Ipsec::Secret = Struct[{  
-selector =&gt; Optional[Pattern[/[^:]*/]],   secret   =&gt; Variant[    
-Ipsec::Secret::Privkey,     Ipsec::Secret::Shared,    
-Ipsec::Secret::Smartcard,   ], }] </code></p>
+outer structure is defined as</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_type'>type</span> <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Secret</span> <span class='op'>=</span> <span class='const'>Struct</span><span class='lbracket'>[</span><span class='lbrace'>{</span>
+  <span class='id identifier rubyid_selector'>selector</span> <span class='op'>=&gt;</span> <span class='const'>Optional</span><span class='lbracket'>[</span><span class='const'>Pattern</span><span class='lbracket'>[</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[^:]*</span><span class='regexp_end'>/</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='id identifier rubyid_secret'>secret</span>   <span class='op'>=&gt;</span> <span class='const'>Variant</span><span class='lbracket'>[</span>
+    <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Secret</span><span class='op'>::</span><span class='const'>Privkey</span><span class='comma'>,</span>
+    <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Secret</span><span class='op'>::</span><span class='const'>Shared</span><span class='comma'>,</span>
+    <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Secret</span><span class='op'>::</span><span class='const'>Smartcard</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rbracket'>]</span>
+</code></pre>
 
 <p>Each sub-type does have a mandatory field named type, which may decide on
 the applicability of the particular type.</p>
@@ -151,8 +160,13 @@ the applicability of the particular type.</p>
 
 <p>The custom type for shared secrets is handling types <code>PSK</code>,
 <code>EAP</code> and <code>XAUTH</code> and storing the passphrase as
-string. <code>puppet type Ipsec::Secret::Shared = Struct[{   type      
-=&gt; Enum['PSK','EAP','XAUTH'],   passphrase =&gt; String, }] </code></p>
+string.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_type'>type</span> <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Secret</span><span class='op'>::</span><span class='const'>Shared</span> <span class='op'>=</span> <span class='const'>Struct</span><span class='lbracket'>[</span><span class='lbrace'>{</span>
+  <span class='id identifier rubyid_type'>type</span>       <span class='op'>=&gt;</span> <span class='const'>Enum</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PSK</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>EAP</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>XAUTH</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='id identifier rubyid_passphrase'>passphrase</span> <span class='op'>=&gt;</span> <span class='const'>String</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rbracket'>]</span>
+</code></pre>
 
 <p>Note! The passphrase is not treated as sensitive data. Use this feature of
 the module with care, only in the case no other solution is possible. The
@@ -165,10 +179,15 @@ support other solutions for handling secret passphrase.</p>
 <code>ECDSA</code> or <code>P12</code>. All Privkey secrets does need a
 private_key_file pointing to the file path the secret key is found. It the
 private key needs to be unlocked, a passphrase may be filed or the prompt
-option enabled. <code>puppet type Ipsec::Secret::Privkey = Struct[{   type 
-=&gt; Enum['RSA','ECDSA','P12'],   private_key_file =&gt;
-Stdlib::Absolutepath,   prompt           =&gt; Optional[Boolean],  
-passphrase       =&gt; Optional[String], }] </code></p>
+option enabled.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_type'>type</span> <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Secret</span><span class='op'>::</span><span class='const'>Privkey</span> <span class='op'>=</span> <span class='const'>Struct</span><span class='lbracket'>[</span><span class='lbrace'>{</span>
+  <span class='id identifier rubyid_type'>type</span>             <span class='op'>=&gt;</span> <span class='const'>Enum</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>RSA</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ECDSA</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>P12</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='id identifier rubyid_private_key_file'>private_key_file</span> <span class='op'>=&gt;</span> <span class='const'>Stdlib</span><span class='op'>::</span><span class='const'>Absolutepath</span><span class='comma'>,</span>
+  <span class='id identifier rubyid_prompt'>prompt</span>           <span class='op'>=&gt;</span> <span class='const'>Optional</span><span class='lbracket'>[</span><span class='const'>Boolean</span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='id identifier rubyid_passphrase'>passphrase</span>       <span class='op'>=&gt;</span> <span class='const'>Optional</span><span class='lbracket'>[</span><span class='const'>String</span><span class='rbracket'>]</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rbracket'>]</span>
+</code></pre>
 
 <p>Note! The passphrase is not treated as sensitive data. Use this feature
 with care, only in the case no other solution is possible. The
@@ -180,10 +199,16 @@ support other solutions for handling secret passphrase.</p>
 <p>Smartcard based authentication is supported by a secret with type
 <code>PIN</code>, which mandatory takes a keyid parameter, and optional the
 slotnr, module name. If the card needs to be unlocked, a pin may be filed
-or the prompt option enabled. <code>puppet type Ipsec::Secret::Smartcard =
-Struct[{   type   =&gt; Enum['PIN'],   slotnr =&gt; Optional[Integer],  
-module =&gt; Optional[String],   keyid  =&gt; Integer,   pin    =&gt;
-Optional[Integer],   prompt =&gt; Optional[Boolean], }] </code></p>
+or the prompt option enabled.</p>
+
+<pre class="code ruby"><code class="ruby">type Ipsec::Secret::Smartcard = Struct[{
+  type   =&gt; Enum[&#39;PIN&#39;],
+  slotnr =&gt; Optional[Integer],
+  module =&gt; Optional[String],
+  keyid  =&gt; Integer,
+  pin    =&gt; Optional[Integer],
+  prompt =&gt; Optional[Boolean],
+}]</code></pre>
 
 <p>Note! The pin is not treated as sensitive data. Use this feature with care,
 only in the case no other solution is possible. The secrets_include
@@ -211,7 +236,7 @@ you feel are necessary or important to include here. Please use the
 </div></div>
 
       <div id="footer">
-  Generated on Wed Nov 15 16:16:17 2017 by
+  Generated on Wed Nov 15 16:18:34 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.2).
 </div>
