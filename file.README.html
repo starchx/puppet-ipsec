@@ -149,10 +149,10 @@ the applicability of the particular type.</p>
 
 <h4 id="label-Ipsec-3A-3ASecret-3A-3AShared">Ipsec::Secret::Shared</h4>
 
-<p>The custom type for shared secrets is handling types {PSK}, {EAP} and
-{XAUTH} and storing the passphrase as string. <code>puppet type
-Ipsec::Secret::Shared = Struct[{   type       =&gt;
-Enum['PSK','EAP','XAUTH'],   passphrase =&gt; String, }] </code></p>
+<p>The custom type for shared secrets is handling types <code>PSK</code>,
+<code>EAP</code> and <code>XAUTH</code> and storing the passphrase as
+string. <code>puppet type Ipsec::Secret::Shared = Struct[{   type      
+=&gt; Enum['PSK','EAP','XAUTH'],   passphrase =&gt; String, }] </code></p>
 
 <p>Note! The passphrase is not treated as sensitive data. Use this feature of
 the module with care, only in the case no other solution is possible. The
@@ -161,14 +161,14 @@ support other solutions for handling secret passphrase.</p>
 
 <h4 id="label-Ipsec-3A-3ASecret-3A-3APrivkey">Ipsec::Secret::Privkey</h4>
 
-<p>Private key type secrets has one of types {RSA}, {ECDSA} or {P12}.
-All Privkey secrets does need a private_key_file pointing to the file path
-the secret key is found. It the private key needs to be unlocked, a
-passphrase may be filed or the prompt option enabled. <code>puppet type
-Ipsec::Secret::Privkey = Struct[{   type             =&gt;
-Enum['RSA','ECDSA','P12'],   private_key_file =&gt; Stdlib::Absolutepath,  
-prompt           =&gt; Optional[Boolean],   passphrase       =&gt;
-Optional[String], }] </code></p>
+<p>Private key type secrets has one of types <code>RSA</code>,
+<code>ECDSA</code> or <code>P12</code>. All Privkey secrets does need a
+private_key_file pointing to the file path the secret key is found. It the
+private key needs to be unlocked, a passphrase may be filed or the prompt
+option enabled. <code>puppet type Ipsec::Secret::Privkey = Struct[{   type 
+=&gt; Enum['RSA','ECDSA','P12'],   private_key_file =&gt;
+Stdlib::Absolutepath,   prompt           =&gt; Optional[Boolean],  
+passphrase       =&gt; Optional[String], }] </code></p>
 
 <p>Note! The passphrase is not treated as sensitive data. Use this feature
 with care, only in the case no other solution is possible. The
@@ -177,13 +177,13 @@ support other solutions for handling secret passphrase.</p>
 
 <h4 id="label-Ipsec-3A-3ASecret-3A-3ASmartcard">Ipsec::Secret::Smartcard</h4>
 
-<p>Smartcard based authentication is supported by a secret with type {PIN},
-which mandatory takes a keyid parameter, and optional the slotnr, module
-name. If the card needs to be unlocked, a pin may be filed or the prompt
-option enabled. <code>puppet type Ipsec::Secret::Smartcard = Struct[{  
-type   =&gt; Enum['PIN'],   slotnr =&gt; Optional[Integer],   module =&gt;
-Optional[String],   keyid  =&gt; Integer,   pin    =&gt; Optional[Integer],
-prompt =&gt; Optional[Boolean], }] </code></p>
+<p>Smartcard based authentication is supported by a secret with type
+<code>PIN</code>, which mandatory takes a keyid parameter, and optional the
+slotnr, module name. If the card needs to be unlocked, a pin may be filed
+or the prompt option enabled. <code>puppet type Ipsec::Secret::Smartcard =
+Struct[{   type   =&gt; Enum['PIN'],   slotnr =&gt; Optional[Integer],  
+module =&gt; Optional[String],   keyid  =&gt; Integer,   pin    =&gt;
+Optional[Integer],   prompt =&gt; Optional[Boolean], }] </code></p>
 
 <p>Note! The pin is not treated as sensitive data. Use this feature with care,
 only in the case no other solution is possible. The secrets_include
@@ -211,7 +211,7 @@ you feel are necessary or important to include here. Please use the
 </div></div>
 
       <div id="footer">
-  Generated on Wed Nov 15 16:14:38 2017 by
+  Generated on Wed Nov 15 16:16:18 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.2).
 </div>
