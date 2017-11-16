@@ -1,15 +1,9 @@
 {
   "name": "trepasi-ipsec",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "author": "T. Repasi",
   "summary": "Setting IPSec up using Strongswan",
-  "tags": [
-    "networking",
-    "IPSec",
-    "strongswan",
-    "security",
-    "encryption"
-  ],
+  "tags": ["networking","IPSec","strongswan","security","encryption"],
   "license": "Apache-2.0",
   "project_page": "https://github.com/rtib/puppet-ipsec",
   "source": "https://github.com/rtib/puppet-ipsec.git",
