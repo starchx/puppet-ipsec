@@ -17,7 +17,7 @@ stages:
 - spec
 - beaker
 - name: deploy
-  if: tag =~ ^v1
+  if: tag =~ ^v\d
 matrix:
   fast_finish: true
   include:
