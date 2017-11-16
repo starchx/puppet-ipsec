@@ -75,11 +75,11 @@ src="https://img.shields.io/github/license/rtib/puppet-ipsec.svg"></a></p>
 </li><li>
 <p><a href="#usage">Usage - Configuration options and additional
 functionality</a></p>
-</li><li>
+<ul><li>
 <p><a href="#defining-secrets">Defining secrets</a></p>
 </li><li>
 <p><a href="#creating-configuration">Creating configuration</a></p>
-<ul><li>
+</li><li>
 <p><a href="#setup-section">Setup section</a></p>
 </li><li>
 <p><a href="#authority-sections">Authority sections</a></p>
@@ -199,16 +199,38 @@ configuring a certification authority. These section may be created via
       crluri: &#39;file:///etc/ssl/crls/myca_crl.pem&#39;</code></pre>
 
 <p>Alternatively, ca sections can be created by resource instances of type
-ipsec::conf::ca.</p>
+<code>ipsec::conf::ca</code>.</p>
 
 <pre class="code ruby"><code class="ruby">ipsec::conf::ca { &#39;myca&#39;:
   auto   =&gt; &#39;add&#39;,
   cacert =&gt; &#39;/etc/ssl/certs/myca.pem&#39;,
   crluri =&gt; &#39;file:///etc/ssl/crls/myca_crl.pem&#39;</code></pre>
 
-<h3 id="label-Defining+authorities">Defining authorities</h3>
+<h4 id="label-Connection+sections">Connection sections</h4>
 
-<p>To define certification authorities,</p>
+<p>Connections sections are created similar to authority sections. Resource
+instances of <code>ipsec::conf::conn</code> are created automatically from
+<code>ipsec::conf['connections']</code> hash parameter, or may be created
+directly within your puppet code.</p>
+
+<pre class="code ruby"><code class="ruby">ipsec::conf:
+  connections:
+    test:
+      type: transport
+      left: %any
+      leftcert: hostcert.pem
+      right: 192.168.56.1
+      rightid: %any
+      auto: route</code></pre>
+
+<pre class="code ruby"><code class="ruby">ipsec::conf::conn { &#39;test&#39;:
+  type     =&gt; &#39;transport&#39;,
+  left     =&gt; &#39;%any&#39;
+  leftcert =&gt; &#39;hostcert.pem&#39;,
+  right    =&gt; &#39;192.168.56.1&#39;,
+  rightid  =&gt; &#39;%any&#39;,
+  auto     =&gt; &#39;route&#39;,
+}</code></pre>
 
 <h2 id="label-Reference">Reference</h2>
 <ul><li>
@@ -331,7 +353,7 @@ you feel are necessary or important to include here. Please use the
 </div></div>
 
       <div id="footer">
-  Generated on Thu Nov 16 10:47:31 2017 by
+  Generated on Thu Nov 16 11:01:06 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.2).
 </div>
