@@ -8,10 +8,12 @@
 
 1. [Description](#description)
 2. [Setup - The basics of getting started with ipsec](#setup)
-    * [What ipsec affects](#what-ipsec-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with ipsec](#beginning-with-ipsec)
 3. [Usage - Configuration options and additional functionality](#usage)
+  * [Defining secrets](#defining-secrets)
+  * [Creating configuration](#creating-configuration)
+    * [Setup section](#setup-section)
+    * [Authority sections](#authority-sections)
+    * [Connection sections](#connection-sections)
 4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
@@ -104,7 +106,7 @@ ipsec::conf:
       crluri: 'file:///etc/ssl/crls/myca_crl.pem'
 ```
 
-Alternatively, ca sections can be created by resource instances of type ipsec::conf::ca.
+Alternatively, ca sections can be created by resource instances of type ```ipsec::conf::ca```.
 
 ```puppet
 ipsec::conf::ca { 'myca':
@@ -112,10 +114,32 @@ ipsec::conf::ca { 'myca':
   cacert => '/etc/ssl/certs/myca.pem',
   crluri => 'file:///etc/ssl/crls/myca_crl.pem'
 ```
+#### Connection sections
 
-### Defining authorities
+Connections sections are created similar to authority sections. Resource instances of ```ipsec::conf::conn``` are created automatically from ```ipsec::conf['connections']``` hash parameter, or may be created directly within your puppet code.
 
-To define certification authorities, 
+```yaml
+ipsec::conf:
+  connections:
+    test:
+      type: transport
+      left: %any
+      leftcert: hostcert.pem
+      right: 192.168.56.1
+      rightid: %any
+      auto: route
+```
+
+```puppet
+ipsec::conf::conn { 'test':
+  type     => 'transport',
+  left     => '%any'
+  leftcert => 'hostcert.pem',
+  right    => '192.168.56.1',
+  rightid  => '%any',
+  auto     => 'route',
+}
+```
 
 ## Reference
 
