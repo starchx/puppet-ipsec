@@ -21,6 +21,7 @@ end
 # Build and release will be handled by Travis-CI deploy stage
 Blacksmith::RakeTask.new do |t|
   t.build = false
+  t.commit_message_pattern = "[blacksmith][skip ci] Bump version to %s"
 end
 
 begin
