@@ -229,8 +229,14 @@ The module is currently tested for a few OS distributions only and needs contrib
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
+Puppet modules on the Puppet Forge are open projects, and community contributions are essential for keeping them great. Please follow the usual guidelines when contributing changes.
+1. fork the repository on GitHub
+1. make your improvements, preferably to a feature branch
+1. rebase your changes to the head of the master branch
+1. squash your changes into a single commit
+1. file a pull request and check the result of Travis-CI tests
 
-## Release Notes/Contributors/Etc. **Optional**
+## Donate
 
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+If you like this project feel free to support via Bitcoin
+[![BitCoin Wallet 1GYq2ycFk3gXdQ2dn6V8YARFL52mVi3Wtj](https://github.com/rtib/puppet-ipsec/raw/master/donate.png)](bitcoin:1GYq2ycFk3gXdQ2dn6V8YARFL52mVi3Wtj?label=donate%3A%20PuppetForge%20trepasi%20ipsec)
