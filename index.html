@@ -60,15 +60,17 @@
       <div id="content"><div id='filecontents'>
 <h1 id="label-ipsec">ipsec</h1>
 
-<p><a href="https://travis-ci.org/rtib/puppet-ipsec"><img
-src="https://travis-ci.org/rtib/puppet-ipsec.svg?branch=master"></a> <a
-href="https://github.com/rtib/puppet-ipsec/issues"><img
+<p>GitHub: <a href="https://github.com/rtib/puppet-ipsec/issues"><img
 src="https://img.shields.io/github/issues/rtib/puppet-ipsec.svg"></a> <a
 href="https://github.com/rtib/puppet-ipsec/blob/master/LICENSE"><img
 src="https://img.shields.io/github/license/rtib/puppet-ipsec.svg"></a> <a
 href="https://github.com/rtib/puppet-ipsec/releases"><img
-src="https://img.shields.io/github/tag/rtib/puppet-ipsec.svg"></a> <a
-href="https://forge.puppet.com/trepasi/ipsec"><img
+src="https://img.shields.io/github/tag/rtib/puppet-ipsec.svg"></a></p>
+
+<p>Travis-CI <a href="https://travis-ci.org/rtib/puppet-ipsec"><img
+src="https://travis-ci.org/rtib/puppet-ipsec.svg?branch=master"></a></p>
+
+<p>Forge: <a href="https://forge.puppet.com/trepasi/ipsec"><img
 src="https://img.shields.io/puppetforge/v/trepasi/ipsec.svg"></a> <a
 href="https://forge.puppet.com/trepasi/ipsec"><img
 src="https://img.shields.io/puppetforge/f/trepasi/ipsec.svg"></a> <a
@@ -254,11 +256,12 @@ the above reference.</p>
 
 <h4 id="label-Ipsec-3A-3ATime">Ipsec::Time</h4>
 
-<p>Represents a time value as used in Strongswan configuration. Consisting of
-one or more numerals and an optional suffix, which designate the dimensions
-of seconds (s), minutes (m), hours (h) or days (d).</p>
+<p>Represents a time value as used in Strongswan configuration. Consisting
+eighter of an integer or one or more numerals followed by an optional
+suffix, which designate the dimensions of seconds (s), minutes (m), hours
+(h) or days (d).</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_type'>type</span> <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Time</span> <span class='op'>=</span> <span class='const'>Pattern</span><span class='lbracket'>[</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^[0-9]+[smhd]?$</span><span class='regexp_end'>/</span></span><span class='rbracket'>]</span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_type'>type</span> <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Time</span> <span class='op'>=</span> <span class='const'>Variant</span><span class='lbracket'>[</span><span class='const'>Integer</span><span class='comma'>,</span><span class='const'>Pattern</span><span class='lbracket'>[</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^[0-9]+[smhd]?$</span><span class='regexp_end'>/</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span>
 </code></pre>
 
 <h4 id="label-Ipsec-3A-3ASecret">Ipsec::Secret</h4>
@@ -308,7 +311,7 @@ option enabled.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_type'>type</span> <span class='const'>Ipsec</span><span class='op'>::</span><span class='const'>Secret</span><span class='op'>::</span><span class='const'>Privkey</span> <span class='op'>=</span> <span class='const'>Struct</span><span class='lbracket'>[</span><span class='lbrace'>{</span>
   <span class='id identifier rubyid_type'>type</span>             <span class='op'>=&gt;</span> <span class='const'>Enum</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>RSA</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ECDSA</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>P12</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
-  <span class='id identifier rubyid_private_key_file'>private_key_file</span> <span class='op'>=&gt;</span> <span class='const'>Stdlib</span><span class='op'>::</span><span class='const'>Absolutepath</span><span class='comma'>,</span>
+  <span class='id identifier rubyid_private_key_file'>private_key_file</span> <span class='op'>=&gt;</span> <span class='const'>String</span><span class='comma'>,</span>
   <span class='id identifier rubyid_prompt'>prompt</span>           <span class='op'>=&gt;</span> <span class='const'>Optional</span><span class='lbracket'>[</span><span class='const'>Boolean</span><span class='rbracket'>]</span><span class='comma'>,</span>
   <span class='id identifier rubyid_passphrase'>passphrase</span>       <span class='op'>=&gt;</span> <span class='const'>Optional</span><span class='lbracket'>[</span><span class='const'>String</span><span class='rbracket'>]</span><span class='comma'>,</span>
 <span class='rbrace'>}</span><span class='rbracket'>]</span>
@@ -365,9 +368,7 @@ src="https://github.com/rtib/puppet-ipsec/raw/master/donate.png"></a></p>
 </div></div>
 
       <div id="footer">
-  Generated on Fri Nov 17 10:14:34 2017 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.4.2).
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
 </div>
 
     </div>
