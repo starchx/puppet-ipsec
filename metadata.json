@@ -1,6 +1,6 @@
 {
   "name": "trepasi-ipsec",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "T. Repasi",
   "summary": "Setting IPSec up using Strongswan",
   "tags": [
