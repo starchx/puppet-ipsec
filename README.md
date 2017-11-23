@@ -203,7 +203,7 @@ Private key type secrets has one of types ```RSA```, ```ECDSA``` or ```P12```. A
 ```puppet
 type Ipsec::Secret::Privkey = Struct[{
   type             => Enum['RSA','ECDSA','P12'],
-  private_key_file => Stdlib::Absolutepath,
+  private_key_file => String,
   prompt           => Optional[Boolean],
   passphrase       => Optional[String],
 }]
