@@ -1,9 +1,14 @@
 # ipsec
 
-[![Build Status](https://travis-ci.org/rtib/puppet-ipsec.svg?branch=master)](https://travis-ci.org/rtib/puppet-ipsec)
+GitHub:
 [![GitHub issues](https://img.shields.io/github/issues/rtib/puppet-ipsec.svg)](https://github.com/rtib/puppet-ipsec/issues)
 [![GitHub license](https://img.shields.io/github/license/rtib/puppet-ipsec.svg)](https://github.com/rtib/puppet-ipsec/blob/master/LICENSE)
 [![GitHub tag](https://img.shields.io/github/tag/rtib/puppet-ipsec.svg)](https://github.com/rtib/puppet-ipsec/releases)
+
+Travis-CI
+[![Build Status](https://travis-ci.org/rtib/puppet-ipsec.svg?branch=master)](https://travis-ci.org/rtib/puppet-ipsec)
+
+Forge:
 [![Puppet Forge](https://img.shields.io/puppetforge/v/trepasi/ipsec.svg)](https://forge.puppet.com/trepasi/ipsec)
 [![Puppet Forge](https://img.shields.io/puppetforge/f/trepasi/ipsec.svg)](https://forge.puppet.com/trepasi/ipsec)
 [![Puppet Forge](https://img.shields.io/puppetforge/dt/trepasi/ipsec.svg)](https://forge.puppet.com/trepasi/ipsec)
@@ -155,10 +160,10 @@ The module introduces some custom data types, which are not contained in the abo
 
 #### Ipsec::Time
 
-Represents a time value as used in Strongswan configuration. Consisting of one or more numerals and an optional suffix, which designate the dimensions of seconds (s), minutes (m), hours (h) or days (d).
+Represents a time value as used in Strongswan configuration. Consisting eighter of an integer or one or more numerals followed by an optional suffix, which designate the dimensions of seconds (s), minutes (m), hours (h) or days (d).
 
 ```puppet
-type Ipsec::Time = Pattern[/^[0-9]+[smhd]?$/]
+type Ipsec::Time = Variant[Integer,Pattern[/^[0-9]+[smhd]?$/]]
 ```
 
 #### Ipsec::Secret
